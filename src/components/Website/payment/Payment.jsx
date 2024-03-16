@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 export default function Payment() {
   return (
     <div>
-      {/*
-       */}
+     
       <div className="payment row p-4 justify-content-around">
         <div className="col-md-6 col-lg-6">
           <div className=" border rounded p-4 d-flex gap-3">

@@ -36,7 +36,7 @@ function App() {
             <Route path="myevents" element={<MyEvents />} />
             <Route path="community" element={<Community />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="payment" element={<Payment />} />
+            <Route path="payment/:eventId" element={<Payment/>}/>
           </Route>
         </Route>
       </Routes>
