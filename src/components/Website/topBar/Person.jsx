@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
+import { BASE } from "../../../Api";
 
 export default function Person() {
   const [user, setUser] = useState([]);
@@ -12,7 +13,7 @@ export default function Person() {
   useEffect(() => {
     axios
       .post(
-        "http://hossamelhadad-001-site12.atempurl.com/api/Auth/GetProfile",
+        `${BASE}/Auth/GetProfile`,
         {
           userId: userId,
         },
@@ -29,11 +30,13 @@ export default function Person() {
       .catch((err) => console.log(err));
   }, []);
 
-  // console.log(user);
+  console.log(user);
   return (
     <>
       <div className="person d-flex gap-3 align-items-center">
-        {user.profileImage && <img src={user.profileImage} alt="person" />}
+        {user.displayProfileImage && (
+          <img src={user.displayProfileImage} alt="person" />
+        )}
         {!user.profileImage && (
           <div
             style={{
@@ -50,8 +53,6 @@ export default function Person() {
             >
               {user.nameEn && user.nameEn.substring(0, 2).toUpperCase()}
             </span>
-            {/* {user.nameEn &&
-              user.nameEn.split(" ")[0][0] + user.nameEn.split(" ")[1][0]} */}
           </div>
         )}
         <div className="details mt-2">
