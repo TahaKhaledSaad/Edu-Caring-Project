@@ -40,7 +40,7 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, [i18n.language, userId]);
- 
+
   const [recommendEvents, setrecommendEvents] = useState([]);
 
   useEffect(() => {
@@ -86,7 +86,11 @@ export default function Home() {
               <h3 className="fw-bold mb-4">Upcoming Events</h3>
               <div className="events">
                 {events.map((event) => (
-                  <Link key={event.id} className="event" to={`event/${event.id}`}>
+                  <Link
+                    key={event.id}
+                    className="event"
+                    to={`event/${event.id}`}
+                  >
                     <img src={event.displayPrimeImageURL} alt="event-Img" />
 
                     <div className="content">
@@ -106,14 +110,20 @@ export default function Home() {
 
                       <div className="date">
                         <p className="day m-0">
-                          {new Date(event.startDay).toLocaleDateString("en-US", {
-                            day: "numeric",
-                          })}
+                          {new Date(event.startDay).toLocaleDateString(
+                            "en-US",
+                            {
+                              day: "numeric",
+                            }
+                          )}
                         </p>
                         <p className="month">
-                          {new Date(event.startDay).toLocaleDateString("en-US", {
-                            month: "short",
-                          })}
+                          {new Date(event.startDay).toLocaleDateString(
+                            "en-US",
+                            {
+                              month: "short",
+                            }
+                          )}
                         </p>
                       </div>
                     </div>
@@ -126,11 +136,17 @@ export default function Home() {
               <h4 className="fw-bold mb-4">Recommendations for you</h4>
               <div className="events d-flex gap-4 flex-wrap justify-content-center align-items-center">
                 {recommendEvents.map((event) => (
-                  <Link key={event.id} className="event" to={`event/${event.id}`}>
+                  <Link
+                    key={event.id}
+                    className="event"
+                    to={`event/${event.id}`}
+                  >
                     <img src={event.displayPrimeImageURL} alt="event-Img" />
 
                     <div className="info">
-                      <h6>{i18n.language === "en" ? event.nameEn : event.nameAr}</h6>
+                      <h6>
+                        {i18n.language === "en" ? event.nameEn : event.nameAr}
+                      </h6>
                       <p>
                         <i className="fa-solid fa-calendar-days"></i>
                         05 Mars, 2023
@@ -140,8 +156,16 @@ export default function Home() {
                         {event.eventDays[0].address}
                       </p>
                       <div className="btns">
-                        {event.isOnline && <span className="online">{ i18n.language === 'en'? 'Online': 'بث مباشر' }</span>}
-                        {event.offline && <span className="offline">{ i18n.language === 'en'? 'Offline': 'مكان محدد' }</span>}
+                        {event.isOnline && (
+                          <span className="online">
+                            {i18n.language === "en" ? "Online" : "بث مباشر"}
+                          </span>
+                        )}
+                        {event.offline && (
+                          <span className="offline">
+                            {i18n.language === "en" ? "Offline" : "مكان محدد"}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </Link>

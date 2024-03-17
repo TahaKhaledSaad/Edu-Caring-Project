@@ -89,7 +89,8 @@ export default function EventDetails() {
               }`}
               style={{
                 fontSize: "20px",
-                backgroundColor: selectedDayIndex === index ? "#3296D4" : "#F2F2F2",
+                backgroundColor:
+                  selectedDayIndex === index ? "#3296D4" : "#F2F2F2",
                 color: selectedDayIndex === index ? "white" : "black",
                 cursor: "pointer",
               }}
@@ -153,7 +154,7 @@ export default function EventDetails() {
                   </div>
 
                   <Link
-                     to={`/home/payment/${eventId}`}
+                    to={`/home/payment/${eventId}`}
                     className="p-1 border text-white text-center"
                     style={{
                       background: "#3296D4",
@@ -248,7 +249,7 @@ export default function EventDetails() {
                   className="desc py-2"
                   style={{ borderBottom: "1px solid #DCDCDC" }}
                 >
-                  <h3>Description</h3>
+                  <h3>{i18n.language === "en" ? "Description" : "الوصف"} </h3>
                   <span
                     style={{
                       color: "#747688",
@@ -261,7 +262,7 @@ export default function EventDetails() {
                 </div>
 
                 <div className="location py-2">
-                  <h3>Location</h3>
+                  <h3>{i18n.language === "en" ? "Location" : "الموقع"}</h3>
                   <p style={{ fontSize: "14px", color: "#747688" }}>
                     {eventDetails.eventDays[selectedDayIndex].address}
                   </p>
@@ -287,7 +288,9 @@ export default function EventDetails() {
                 className="speakers rounded py-3 px-2 w-25"
                 style={{ backgroundColor: "#F5F7FB", height: "50%" }}
               >
-                <h5 className="text-center">Speakers</h5>
+                <h5 className="text-center">
+                  {i18n.language === "en" ? "Speakers" : "المتحدثين"}
+                </h5>
                 <div className="d-flex flex-wrap gap-3 justify-content-center">
                   {eventDetails.eventDays.map((d) =>
                     d.eventDaySpeakers.map((s) => {

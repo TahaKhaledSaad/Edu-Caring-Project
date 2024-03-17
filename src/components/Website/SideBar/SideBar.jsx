@@ -15,7 +15,7 @@ function SideBar() {
   return (
     <>
       <div className="d-flex flex-column justify-content-between p-2 sideBar shadow-sm">
-        <Link to="home" className="" onClick={() => handleSetActiveLink("home")}>
+        <Link to="/" className="" onClick={() => handleSetActiveLink("home")}>
           <img src={logo} alt="logo" className="mw-100 h-auto" />
         </Link>
         <hr className="opacity-0" />
@@ -34,7 +34,9 @@ function SideBar() {
               <span className="fs-6 ">Home</span>
             </Link>
           </li>
-          <li className={`nav-item my-2 ${activeLink === "myevents" && "active"}`}>
+          <li
+            className={`nav-item my-2 ${activeLink === "myevents" && "active"}`}
+          >
             <Link
               to="/home/myevents"
               className="nav-link px-2"
@@ -48,7 +50,11 @@ function SideBar() {
               <span className="fs-6 ">My Events</span>
             </Link>
           </li>
-          <li className={`nav-item my-2 ${activeLink === "community" && "active"}`}>
+          <li
+            className={`nav-item my-2 ${
+              activeLink === "community" && "active"
+            }`}
+          >
             <Link
               to="community"
               className="nav-link px-2"
@@ -62,7 +68,9 @@ function SideBar() {
               <span className="fs-6 ">Community</span>
             </Link>
           </li>
-          <li className={`nav-item my-2 ${activeLink === "profile" && "active"}`}>
+          <li
+            className={`nav-item my-2 ${activeLink === "profile" && "active"}`}
+          >
             <Link
               to="profile"
               className="nav-link px-2"
