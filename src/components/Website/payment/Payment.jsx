@@ -150,7 +150,7 @@ export default function Payment() {
     const month = months[date.getMonth()];
     const year = date.getFullYear();
 
-    const formattedDate = `${day < 10 ? "0" + day : day} - ${month.slice(
+    const formattedDate = `${day < 10 ? "0" + day : day} ${month.slice(
       0,
       3
     )}, ${year}`;

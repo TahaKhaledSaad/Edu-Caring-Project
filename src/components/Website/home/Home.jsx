@@ -72,10 +72,8 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, [i18n.language, userId]);
-  console.log(reminder);
-  //////////////////////////////////////////////////
-  //////////////////////////////////////////////////
-  const dateString = reminder.startDay;
+
+  const dateString = reminder?.startDay;
 
   // Convert the date string to a Date object
   const eventDate = new Date(dateString);
@@ -95,12 +93,6 @@ export default function Home() {
     (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
   );
 
-  console.log("Days:", daysDifference);
-  console.log("Hours:", hoursDifference);
-  console.log("Minutes:", minutesDifference);
-
-  //////////////////////////////////////////////////
-  //////////////////////////////////////////////////
   return (
     <div>
       <SideBar />
@@ -108,13 +100,13 @@ export default function Home() {
       <div className="outlet pl-2">
         {isHomeRoute && (
           <div className="home-comp">
-            <Link to={`event/${reminder.id}`}>
+            <Link to={`event/${reminder?.id}`}>
               <div className="period">
                 <h3 className="statement">
                   <span className="text-danger">
                     {i18n.language === "en" ? "Reminder :" : "تذكير : "}{" "}
                   </span>{" "}
-                  {reminder.name}
+                  {reminder?.name}
                 </h3>
                 <div className="content">
                   <div className="nums">

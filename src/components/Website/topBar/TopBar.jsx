@@ -10,26 +10,36 @@ export default function TopBar() {
   const [routeText, setRouteText] = useState("Home");
   const [iconsVisible, setIconsVisible] = useState(true);
 
+const eventId = location.pathname.split("/")[3];
+
+// const [speakerId, setSpeakerId] =
+
   // Use the useEffect hook to change the text when the route changes
   useEffect(() => {
     switch (location.pathname) {
       case "/home":
         setRouteText("Home");
         break;
-      case "/myevents":
+      case "/home/myevents":
         setRouteText("My Events");
         break;
-      case "/community":
+      case "/home/community":
         setRouteText("Community");
         break;
-      case "/profile":
+      case "/home/profile":
         setRouteText("Profile");
         break;
+      case `/home/event/${eventId}`:
+        setRouteText("Event Details");
+        break;
+      case `/home/payment/${eventId}`:
+        setRouteText("Payment");
+        break;
       default:
-        setRouteText("Home");
+        setRouteText("Event Details");
         break;
     }
-  }, [location]);
+  }, [location, eventId]);
 
   const toggleIconsVisibility = () => {
     setIconsVisible(!iconsVisible);

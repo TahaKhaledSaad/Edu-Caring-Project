@@ -2,6 +2,7 @@ import logo from "../../../assets/logo-removebg-preview.png";
 import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
+import Logout from "../Popups/Logout";
 
 function SideBar() {
   // State to track the active link
@@ -11,6 +12,7 @@ function SideBar() {
   const handleSetActiveLink = (path) => {
     setActiveLink(path);
   };
+
 
   return (
     <>
@@ -85,10 +87,9 @@ function SideBar() {
             </Link>
           </li>
         </ul>
-        <div className="text-danger px-2">
-          <i className="fa-solid fa-arrow-right-from-bracket me-2 fs-6 "></i>
-          <span className="fs-6 ">log out</span>
-        </div>
+
+        <Logout></Logout>
+       
       </div>
     </>
   );

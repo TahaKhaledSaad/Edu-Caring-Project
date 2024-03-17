@@ -15,7 +15,7 @@ import Profile from "./components/Website/Profile/Profile.jsx";
 import Event from "./components/Website/Event/Event.jsx";
 import Payment from "./components/Website/payment/Payment.jsx";
 import SpeakerProfile from "./components/Website/speakerProfile/SpeakerProfile.jsx";
-
+import Logout from "./components/Website/Popups/Logout.jsx";
 function App() {
   return (
     <div>
@@ -25,7 +25,6 @@ function App() {
         <Route path="login" element={<Login />}></Route>
         <Route path="register-attendance" element={<AttendanceReg />}></Route>
         <Route path="register-speaker" element={<SpeakerReg />}></Route>
-
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />}>
             <Route path="event/:eventId" element={<Event />} />
@@ -36,7 +35,7 @@ function App() {
             <Route path="myevents" element={<MyEvents />} />
             <Route path="community" element={<Community />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="payment/:eventId" element={<Payment/>}/>
+            <Route path="payment/:eventId" element={<Payment />} />
           </Route>
         </Route>
       </Routes>
