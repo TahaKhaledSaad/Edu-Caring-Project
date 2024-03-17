@@ -58,6 +58,49 @@ export default function Home() {
   }, []);
   // console.log(events);
 
+  const [reminder, setReminder] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${BASE}/Event/GetReminder`, {
+        headers: {
+          UserId: userId,
+          Language: i18n.language,
+        },
+      })
+      .then((data) => {
+        setReminder(data.data.responseObject);
+      })
+      .catch((err) => console.log(err));
+  }, [i18n.language, userId]);
+  console.log(reminder);
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  const dateString = reminder.startDay;
+
+  // Convert the date string to a Date object
+  const eventDate = new Date(dateString);
+
+  // Get the current date
+  const currentDate = new Date();
+
+  // Calculate the time difference in milliseconds
+  const timeDifference = eventDate.getTime() - currentDate.getTime();
+
+  // Calculate the difference in days, hours, and minutes
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const hoursDifference = Math.floor(
+    (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutesDifference = Math.floor(
+    (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+  );
+
+  console.log("Days:", daysDifference);
+  console.log("Hours:", hoursDifference);
+  console.log("Minutes:", minutesDifference);
+
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
   return (
     <div>
       <SideBar />
@@ -65,22 +108,28 @@ export default function Home() {
       <div className="outlet pl-2">
         {isHomeRoute && (
           <div className="home-comp">
-            <div className="period">
-              <h3 className="statement">
-                Programming : How to begin your first job! and more details
-              </h3>
-              <div className="content">
-                <div className="nums">
-                  <h4>02</h4>:<h4>01</h4>:<h4>13</h4>
-                </div>
+            <Link to={`event/${reminder.id}`}>
+              <div className="period">
+                <h3 className="statement">
+                  <span className="text-danger">
+                    {i18n.language === "en" ? "Reminder :" : "تذكير : "}{" "}
+                  </span>{" "}
+                  {reminder.name}
+                </h3>
+                <div className="content">
+                  <div className="nums">
+                    <h4>{daysDifference}</h4>:<h4>{hoursDifference}</h4>:
+                    <h4>{minutesDifference}</h4>
+                  </div>
 
-                <div className="text">
-                  <p>Days</p>
-                  <p>Hours</p>
-                  <p>Minutes</p>
+                  <div className="text">
+                    <p>{i18n.language === "en" ? "Days" : "أيام"}</p>
+                    <p>{i18n.language === "en" ? "Hours" : "ساعات"}</p>
+                    <p>{i18n.language === "en" ? "Minutes" : "دقائق"}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             <div className="coming-events">
               <h3 className="fw-bold mb-4">Upcoming Events</h3>
