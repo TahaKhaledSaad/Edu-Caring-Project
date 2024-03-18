@@ -179,7 +179,7 @@
   .home-comp .recommend .event .info p i {
     padding: 5px;
   }
-  .home-comp .recommend .event .info .btns .online {
+  .home-comp .recommend .event .info .btns span {
     background-color: #27ae60;
     color: #fff;
     margin: 0 5px;

@@ -36,7 +36,7 @@ export default function Home() {
         },
       })
       .then((data) => {
-        setEvents(data.data.responseObject.events);
+        setEvents(data.data.responseObject?.events);
       })
       .catch((err) => console.log(err));
   }, [i18n.language, userId]);
@@ -56,7 +56,7 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, []);
-  // console.log(events);
+  // console.log(recommendEvents);
 
   const [reminder, setReminder] = useState([]);
   useEffect(() => {
@@ -202,7 +202,7 @@ export default function Home() {
                             {i18n.language === "en" ? "Online" : "بث مباشر"}
                           </span>
                         )}
-                        {event.offline && (
+                        {event.isOffline && (
                           <span className="offline">
                             {i18n.language === "en" ? "Offline" : "مكان محدد"}
                           </span>

@@ -60,6 +60,7 @@ export default function MyEvents() {
     return `${day < 10 ? "0" + day : day} ${month}, ${year}`;
   };
 
+  // console.log(userEvents);
   return (
     <>
       <div className="myevents">
@@ -288,7 +289,7 @@ export default function MyEvents() {
                     {event.eventDays[0]?.address}
                   </p>
                   <div className="rate">
-                    <span>({event.numberOfReviews?.length || 0} reviews)</span>
+                    <span>({event.numberOfReviews || 0} reviews)</span>
                     <span>
                       <i className="bi bi-star-fill"></i>
                       {event.reviewRate || 0}

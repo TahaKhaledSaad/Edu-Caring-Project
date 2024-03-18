@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
 import { BASE } from "../../../Api";
+import { useTranslation } from "react-i18next";
 
 export default function Person() {
   const [user, setUser] = useState([]);
@@ -10,12 +11,15 @@ export default function Person() {
   const userId = cookie.get("userId");
   // console.log(userId);
 
+  const { i18n } = useTranslation();
+
   useEffect(() => {
     axios
       .post(
         `${BASE}/Auth/GetProfile`,
         {
           userId: userId,
+          Language: i18n.language,
         },
         {
           headers: {
@@ -28,9 +32,9 @@ export default function Person() {
         setUser(data.data.responseObject);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [userId, i18n.language]);
 
-  console.log(user);
+  
   return (
     <>
       <div className="person d-flex gap-3 align-items-center">
@@ -51,12 +55,18 @@ export default function Person() {
               className="text-dark fs-3 fw-bold"
               style={{ userSelect: "none" }}
             >
-              {user.nameEn && user.nameEn.substring(0, 2).toUpperCase()}
+              {user && i18n.language === "en"
+                ? user.nameEn?.substring(0, 2).toUpperCase()
+                : user.nameAr?.substring(0, 2).toUpperCase()}
+              {}
             </span>
           </div>
         )}
         <div className="details mt-2">
-          <span className="name">{user.nameEn}</span>
+          <span className="name">
+            {" "}
+            {i18n.language === "en" ? user.nameEn : user.nameAr}
+          </span>
           <p className="email">{user.email}</p>
         </div>
       </div>
