@@ -16,6 +16,7 @@ import Event from "./components/Website/Event/Event.jsx";
 import Payment from "./components/Website/payment/Payment.jsx";
 import SpeakerProfile from "./components/Website/speakerProfile/SpeakerProfile.jsx";
 import Session from "./components/Website/session/Session.jsx";
+import Test from "./components/Test.jsx";
 function App() {
   return (
     <div>
@@ -25,7 +26,7 @@ function App() {
         <Route path="login" element={<Login />}></Route>
         <Route path="register-attendance" element={<AttendanceReg />}></Route>
         <Route path="register-speaker" element={<SpeakerReg />}></Route>
-
+        <Route path="test" element={<Test />} />
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />}>
             <Route path="event/:eventId" element={<Event />} />
